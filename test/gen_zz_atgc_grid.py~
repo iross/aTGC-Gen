@@ -1,0 +1,38 @@
+#!/usr/bin/env python
+
+import subprocess
+from optparse import OptionParser
+
+def gen_grid(options):
+
+    f4max = options.f4Max
+    f5max = options.f5Max
+    coupling = options.coupling
+    side = options.side
+    dryrun = options.dryrun
+
+    h4s = [-h4max + 2*h4max/(side - 1.0)*i for i in range(side)]
+    h5s = [-h5max + 2*h5max/(side - 1.0)*i for i in range(side)]
+
+    for h4 in h4s:
+        for h5 in h5s:
+            if dryrun:
+                subprocess.call("./gen_zz_atgc_point.sh --dryrun --f4 %.3f --f5 %.3f --coupling %s"%(h4,h5,coupling),
+                                executable="bash",shell=True)
+            else:
+                subprocess.call("./gen_zz_atgc_point.sh  --f4 %.3f --f5 %.3f --coupling %s"%(h4,h5,coupling),
+                                executable="bash",shell=True)
+
+if __name__ == '__main__':
+    parser = OptionParser(description="%prog : atgc grid producer.",
+                          usage="%prog --h4Max 0.1 --h5Max 0.1 --coupling Z --NPointsSide 3")
+
+    parser.add_option("--f4Max",dest="f4Max",type="float")
+    parser.add_option("--f5Max",dest="f5Max",type="float")
+    parser.add_option("--coupling",dest="coupling",type="string")
+    parser.add_option("--NPointsSide",dest="side",type="int")
+    parser.add_option("--dryrun",dest="dryrun",action="store_true",default=False)
+
+    (options,args) = parser.parse_args()
+
+    gen_grid(options)

@@ -1,0 +1,16 @@
+120311_160625: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -create
+120311_160636: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -submit
+120312_075442: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -status
+120313_050912: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -status
+120313_053212: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -status
+120313_053553: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -status
+120313_080121: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -status
+120313_080214: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -status
+120313_125321: /cms/sw/CRAB_2_8_0/python/crab.py -status
+120313_130059: /cms/sw/CRAB_2_8_0/python/crab.py -get
+120314_041928: /cms/sw/CRAB_2_8_0/python/crab.py -get
+120314_042024: /cms/sw/CRAB_2_8_0/python/crab.py -status
+120314_042746: /cms/sw/CRAB_2_8_0/python/crab.py -create
+120314_043246: /cms/sw/CRAB_2_8_0/python/crab.py -submit
+120314_044106: /cms/sw/CRAB_2_8_0/python/crab.py -status
+120314_045707: /cms/sw/CRAB_2_8_0/python/crab.py -status

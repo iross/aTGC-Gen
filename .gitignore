@@ -1,0 +1,22 @@
+# Compiled source
+*.com
+*.pyc
+*.o
+*.so
+
+#Bin
+*.root
+*.png
+*.pdf
+*.zip
+
+#want to track the libraries which are shoved into tarballs
+*.tgz
+*.txt
+*temp*
+*CVS*
+*crab_*
+*SherpaRun*
+*Process*
+*Analysis*
+*.bk

@@ -1,0 +1,4 @@
+120310_133056: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -create
+120310_133113: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -submit
+120311_063932: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -status
+120311_063955: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -get

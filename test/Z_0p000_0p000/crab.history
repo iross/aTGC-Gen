@@ -1,0 +1,26 @@
+120311_153545: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -create
+120311_153717: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -create
+120311_153904: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -create
+120311_160542: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -create
+120311_160553: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -submit
+120312_075432: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -status
+120312_080228: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -status
+120313_050904: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -status
+120313_052516: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -status
+120313_052535: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -forceResubmit 33-35,39,42,49,56,71-72,76,80,88,95-96,99,41
+120313_053545: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -status
+120313_054017: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -status
+120313_080115: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -status
+120313_080206: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -status
+120313_124130: /afs/hep.wisc.edu/cms/sw/CRAB_2_7_7p1/python/crab.py -create
+120313_124426: /cms/sw/CRAB_2_8_0/python/crab.py -create
+120313_124444: /cms/sw/CRAB_2_8_0/python/crab.py -create
+120313_124517: /cms/sw/CRAB_2_8_0/python/crab.py -kill all -c crab_ZZ_aTGC_fZ_0p000_0p000_pubtest
+120313_125313: /cms/sw/CRAB_2_8_0/python/crab.py -status
+120313_125846: /cms/sw/CRAB_2_8_0/python/crab.py -get
+120314_041923: /cms/sw/CRAB_2_8_0/python/crab.py -get
+120314_042017: /cms/sw/CRAB_2_8_0/python/crab.py -status
+120314_042720: /cms/sw/CRAB_2_8_0/python/crab.py -create
+120314_043225: /cms/sw/CRAB_2_8_0/python/crab.py -submit
+120314_044058: /cms/sw/CRAB_2_8_0/python/crab.py -status
+120314_045659: /cms/sw/CRAB_2_8_0/python/crab.py -status
