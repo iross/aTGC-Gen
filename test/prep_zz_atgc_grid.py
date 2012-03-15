@@ -17,11 +17,13 @@ def prep_grid(options):
 
 	f4s = [-f4max + 2*f4max/(side - 1.0)*i for i in range(side)]
 	f5s = [-f5max + 2*f5max/(side - 1.0)*i for i in range(side)]
+	f4s = [0.006,0.0001]
+	f5s = [0.0]
 	home=os.getcwd()
 	for f4 in f4s:
-		f4str = ('%.3f'%f4).replace('.','p').replace('-','m')
+		f4str = ('%.4f'%f4).replace('.','p').replace('-','m')
 		for f5 in f5s:
-			f5str =('%.3f'%f5).replace('.','p').replace('-','m')
+			f5str =('%.4f'%f5).replace('.','p').replace('-','m')
 			print f4str,f5str
 			#mkdir for this grid point, prep libraries
 			subprocess.call("mkdir %s_%s_%s%s"%(coupling,f4str,f5str,postfix),executable="bash",shell=True) 
@@ -45,9 +47,9 @@ def prep_grid(options):
 	os.chdir(home)
 	print "now go back into the gridpoint dirs and cmsDrive around"
 	for f4 in f4s:
-		f4str = ('%.3f'%f4).replace('.','p').replace('-','m')
+		f4str = ('%.4f'%f4).replace('.','p').replace('-','m')
 		for f5 in f5s:
-			f5str =('%.3f'%f5).replace('.','p').replace('-','m')
+			f5str =('%.4f'%f5).replace('.','p').replace('-','m')
 			cur=os.getcwd()
 			os.chdir("%s_%s_%s%s"%(coupling,f4str,f5str,postfix))
 			subprocess.call("cmsDriver.py ZZ/Gen/sherpa_f%s_%s_%s%s_cff.py -s GEN --conditions MC_41_v0::All --datatier GEN-SIM-RAW --eventcontent RAWSIM -n 100 --no_exec --fileout Sherpa_Gen.root"%(coupling,f4str,f5str,postfix),executable="bash",shell=True)
