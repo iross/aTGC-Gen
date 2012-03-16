@@ -14,7 +14,7 @@ def gen_grid(options):
     print postfix
     f4s = [-f4max + 2*f4max/(side - 1.0)*i for i in range(side)]
     f5s = [-f5max + 2*f5max/(side - 1.0)*i for i in range(side)]
-    f4s = [0.006,0.0001]
+    f4s = [0.06]
     f5s = [0.0]
 
     for f4 in f4s:

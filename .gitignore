@@ -13,6 +13,7 @@
 #want to track the libraries which are shoved into tarballs
 *.tgz
 *.txt
+*.history
 *temp*
 *CVS*
 *crab_*

@@ -82,11 +82,13 @@ rm Run.dat
 if ! $dryrun ; then
 farmoutAnalysisJobs --quick-test --express-queue --input-dir=$PWD --fwklite \
     --output-dir=. --job-count=1 \
+	--match-input-files=submit\_$couplType\_$f4\_$f5$postfix.sh \
     --extra-inputs=$PWD/sherpa_f${couplType}_${f4}_${f5}$postfix\_cards.tgz,$PWD/MakeSherpaLibs.sh \
     sherpa_ZZ\_$couplType\_$f4\_$f5$postfix $CMSSW_BASE $PWD/submit\_$couplType\_$f4\_$f5$postfix.sh
 else 
 echo farmoutAnalysisJobs --quick-test --express-queue --input-dir=$PWD --fwklite \
     --output-dir=. --job-count=1 \
+	--match-input-files=submit\_$couplType\_$f4\_$f5$postfix.sh \
     --extra-inputs=$PWD/sherpa_f${couplType}_${f4}_${f5}$postfix\_cards.tgz,$PWD/MakeSherpaLibs.sh \
     sherpa_ZZ\_$couplType\_$f4\_$f5$postfix $CMSSW_BASE $PWD/submit\_$couplType\_$f4\_$f5$postfix.sh
 fi
