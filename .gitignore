@@ -14,7 +14,7 @@
 *.tgz
 *.txt
 *.history
-*temp*
+*temp[^l]*
 *CVS*
 *crab_*
 *SherpaRun*
