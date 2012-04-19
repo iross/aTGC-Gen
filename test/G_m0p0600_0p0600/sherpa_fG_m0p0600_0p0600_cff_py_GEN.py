@@ -2,10 +2,8 @@
 # using: 
 # Revision: 1.284.2.5 
 # Source: /cvs_server/repositories/CMSSW/CMSSW/Configuration/PyReleaseValidation/python/ConfigBuilder.py,v 
-# with command line options: ZZ/Gen/python/sherpa_0p0_0p0_cff.py -s GEN --conditions MC_41_V0::All --datatier GEN-SIM-RAW --eventcontent RAWSIM -n 1 --no_exec --fileout Sherpa_Gen.root
+# with command line options: ZZ/Gen/sherpa_fG_m0p0600_0p0600_cff.py -s GEN --conditions MC_41_v0::All --datatier GEN-SIM-RAW --eventcontent RAWSIM -n 100 --no_exec --fileout Sherpa_Gen.root
 import FWCore.ParameterSet.Config as cms
-
-# this is a tag test
 
 process = cms.Process('GEN')
 
@@ -24,7 +22,7 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load('Configuration.EventContent.EventContent_cff')
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1)
+    input = cms.untracked.int32(100)
 )
 
 # Input source
@@ -37,7 +35,7 @@ process.options = cms.untracked.PSet(
 # Production Info
 process.configurationMetadata = cms.untracked.PSet(
     version = cms.untracked.string('$Revision: 1.284.2.5 $'),
-    annotation = cms.untracked.string('ZZ/Gen/python/sherpa_0p0_0p0_cff.py nevts:1'),
+    annotation = cms.untracked.string('ZZ/Gen/sherpa_fG_m0p0600_0p0600_cff.py nevts:100'),
     name = cms.untracked.string('PyReleaseValidation')
 )
 
@@ -60,7 +58,7 @@ process.RAWSIMoutput = cms.OutputModule("PoolOutputModule",
 # Additional output definition
 
 # Other statements
-process.GlobalTag.globaltag = 'MC_41_V0::All'
+process.GlobalTag.globaltag = 'MC_41_v0::All'
 
 process.generator = cms.EDFilter("SherpaGeneratorFilter",
     ResultDir = cms.untracked.string('Result'),
@@ -80,30 +78,14 @@ process.generator = cms.EDFilter("SherpaGeneratorFilter",
             '(model){', 
             ' MASSIVE[15]           = 1', 
             ' MODEL                 = SM+AGC', 
-            ' EW_SCHEME             = 0', 
-            ' ALPHAS(MZ)            = 0.129783', 
-            ' ALPHAS(default)       = 0.0800', 
-            ' ORDER_ALPHAS          = 0', 
-            ' 1/ALPHAQED(0)         = 137.036', 
-            ' 1/ALPHAQED(default)   = 132.51', 
-            ' SIN2THETAW            = 0.2222', 
-            ' VEV                   = 246.', 
-            ' LAMBDA                = 0.47591', 
-            ' CKMORDER              = 0', 
-            ' CABIBBO               = 0.22', 
-            ' A                     = 0.85', 
-            ' RHO                   = 0.50', 
-            ' ETA                   = 0.50', 
             ' STABLE[15]            = 0', 
             ' # atgc parameters', 
-            ' f4_Z     = 0.0', 
-            ' f4_gamma = 0', 
-            ' f5_Z     = 0.0', 
-            ' f5_gamma = 0', 
-            ' UNITARIZATION_N       = 0', 
-            ' UNITARIZATION_SCALE   = 1500', 
+            ' F4_Z     = 0.0', 
+            ' F4_gamma = -0.0600', 
+            ' F5_Z     = 0.0', 
+            ' F5_gamma = 0.0600', 
             '}(model)', 
-            '(beam){', 
+            '(beam)', 
             ' BEAM_1 = 2212; BEAM_ENERGY_1 = 3500;', 
             ' BEAM_2 = 2212; BEAM_ENERGY_2 = 3500;', 
             '}(beam)', 
@@ -127,15 +109,19 @@ process.generator = cms.EDFilter("SherpaGeneratorFilter",
             '(me){', 
             ' ME_SIGNAL_GENERATOR = Amegic', 
             '}(me)', 
+            '(fragmentation){', 
+            ' YFS_MODE = 2', 
+            ' YFS_USE_ME = 1', 
+            '}', 
             '(mi) {', 
             ' MI_HANDLER = Amisic', 
             '}')
     ),
     filterEfficiency = cms.untracked.double(1.0),
-    Path = cms.untracked.string('/afs/hep.wisc.edu/cms/iross/EWKZZ/CMSSW_4_1_8_patch7/src/ZZ/Gen/SherpaRun'),
+    Path = cms.untracked.string("./SherpaRun"),
     crossSection = cms.untracked.double(-1),
     maxEventsToPrint = cms.untracked.int32(0),
-    PathPiece = cms.untracked.string('/afs/hep.wisc.edu/cms/iross/EWKZZ/CMSSW_4_1_8_patch7/src/ZZ/Gen/SherpaRun')
+    PathPiece = cms.untracked.string("./SherpaRun")
 )
 
 
