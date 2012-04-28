@@ -35,9 +35,9 @@
 
  # atgc parameters
  F4_Z     = #F4Z
- F4_gamma = #F4G 
+ F4_GAMMA = #F4G 
  F5_Z     = #F5Z
- F5_gamma = #F5G
+ F5_GAMMA = #F5G
  !UNITARIZATION_N = 2
  !UNITARIZATION_SCALE= 1000
 }(model)
