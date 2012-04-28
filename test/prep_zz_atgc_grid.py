@@ -17,8 +17,6 @@ def prep_grid(options):
 
 	f4s = [-f4max + 2*f4max/(side - 1.0)*i for i in range(side)]
 	f5s = [-f5max + 2*f5max/(side - 1.0)*i for i in range(side)]
-	f4s = [0.006,0.0001]
-	f5s = [0.0]
 	home=os.getcwd()
 	for f4 in f4s:
 		f4str = ('%.4f'%f4).replace('.','p').replace('-','m')
@@ -30,7 +28,7 @@ def prep_grid(options):
 			cur=os.getcwd()
 			os.chdir("%s_%s_%s%s"%(coupling,f4str,f5str,postfix))
 #			sherpa_ZZ_Z_0p060_0p000_l1000-submit_Z_0p060_0p000_l1000
-			subprocess.call("../PrepareSherpaLibs.sh -i /scratch/iross/sherpa_ZZ_%s_%s_%s%s-submit_%s_%s_%s%s/submit_%s_%s_%s%s-Sherpa_Gen -p f%s_%s_%s%s -m PROD"%
+			subprocess.call("../PrepareSherpaLibs.sh -i /scratch/iross/sherpa_ZZ_%s_%s_%s%s-submit_%s_%s_%s%s/submit_%s_%s_%s%s* -p f%s_%s_%s%s -m PROD"%
 					(coupling,f4str,f5str,postfix,
 						coupling,f4str,f5str,postfix,
 						coupling,f4str,f5str,postfix,
