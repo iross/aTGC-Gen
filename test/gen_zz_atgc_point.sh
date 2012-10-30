@@ -2,23 +2,23 @@
 
 function usage
 {
-    echo "gen_point.sh --coupling Z/G --f4 value --f5 value"
+    echo "gen_point.sh --coupling Z/G --fz value --fg value"
 }
 
-f4=
-f5=
+fz=
+fg=
 couplType=
 dryrun=false
 postfix=""
 while [ "$1" != "" ]; do
     case $1 in
-        --f4 )           
+        --fz )           
 	    shift
-	    f4=$1
+	    fz=$1
 	    ;;
-        --f5 )    
+        --fg )    
 	    shift
-	    f5=$1
+	    fg=$1
 	    ;;
 	--coupling )
 	    shift
@@ -42,7 +42,7 @@ while [ "$1" != "" ]; do
     esac
     shift
 done
-if [[ $couplType !=  "Z" && $couplType != "G" ]] ; then
+if [[ $couplType !=  "4" && $couplType != "5" ]] ; then
 echo "Invalid coupling type: " $couplType
 exit
 fi
@@ -51,44 +51,46 @@ if [ "$postfix" == "_" ] ; then
 	postfix=""
 fi
 #specilize template
+#temp
 cp Run.dat_template Run.dat
-if [[ $couplType == "Z" ]] ; then
-    sed 's/#F4Z/'$f4'/' -i Run.dat
-    sed 's/#F5Z/'$f5'/' -i Run.dat
-    sed 's/#F4G/0.0/' -i Run.dat
-    sed 's/#F5G/0.0/' -i Run.dat
-elif [[ $couplType == "G" ]] ; then
-    sed 's/#F4Z/0.0/' -i Run.dat
+#cp Run.dat_david Run.dat
+if [[ $couplType == "4" ]] ; then
+    sed 's/#F4Z/'$fz'/' -i Run.dat
+    sed 's/#F4G/'$fg'/' -i Run.dat
     sed 's/#F5Z/0.0/' -i Run.dat
-    sed 's/#F4G/'$f4'/' -i Run.dat
-    sed 's/#F5G/'$f5'/' -i Run.dat
+    sed 's/#F5G/0.0/' -i Run.dat
+elif [[ $couplType == "5" ]] ; then
+    sed 's/#F4Z/0.0/' -i Run.dat
+    sed 's/#F4G/0.0/' -i Run.dat
+    sed 's/#F5Z/'$fz'/' -i Run.dat
+    sed 's/#F5G/'$fg'/' -i Run.dat
 fi
 
-f4=${f4/./p}
-f5=${f5/./p}
-f4=${f4/-/m}
-f5=${f5/-/m}
+fz=${fz/./p}
+fg=${fg/./p}
+fz=${fz/-/m}
+fg=${fg/-/m}
 
-tar -czf sherpa\_f$couplType\_$f4\_$f5$postfix\_cards.tgz Run.dat
-cp submitTemplate.sh submit\_$couplType\_$f4\_$f5$postfix.sh
+tar -czf sherpa\_f$couplType\_$fz\_$fg$postfix\_cards.tgz Run.dat
+cp submitTemplate.sh submit\_$couplType\_$fz\_$fg$postfix.sh
 #COUP_#F4_#F5
-sed 's/#COUP/'$couplType'/' -i submit\_$couplType\_$f4\_$f5$postfix.sh
-sed 's/#F4/'$f4'/' -i submit\_$couplType\_$f4\_$f5$postfix.sh
-sed 's/#F5/'$f5'/' -i submit\_$couplType\_$f4\_$f5$postfix.sh
-sed 's/#POSTFIX/'$postfix'/' -i submit\_$couplType\_$f4\_$f5$postfix.sh 
+sed 's/#COUP/'$couplType'/' -i submit\_$couplType\_$fz\_$fg$postfix.sh
+sed 's/#F4/'$fz'/' -i submit\_$couplType\_$fz\_$fg$postfix.sh
+sed 's/#F5/'$fg'/' -i submit\_$couplType\_$fz\_$fg$postfix.sh
+sed 's/#POSTFIX/'$postfix'/' -i submit\_$couplType\_$fz\_$fg$postfix.sh 
 rm Run.dat
 
 #have dryrun mode for testing
 if ! $dryrun ; then
 farmoutAnalysisJobs --quick-test --express-queue --input-dir=$PWD --fwklite \
-    --output-dir=. --job-count=1 \
-	--match-input-files=submit\_$couplType\_$f4\_$f5$postfix.sh \
-    --extra-inputs=$PWD/sherpa_f${couplType}_${f4}_${f5}$postfix\_cards.tgz,$PWD/MakeSherpaLibs.sh \
-    sherpa_ZZ\_$couplType\_$f4\_$f5$postfix $CMSSW_BASE $PWD/submit\_$couplType\_$f4\_$f5$postfix.sh
+    --output-dir=. --job-count=1 --shared-fs\
+	--match-input-files=submit\_$couplType\_$fz\_$fg$postfix.sh \
+    --extra-inputs=$PWD/sherpa_f${couplType}_${fz}_${fg}$postfix\_cards.tgz,$PWD/MakeSherpaLibs.sh \
+    sherpa_ZZ\_$couplType\_$fz\_$fg$postfix $CMSSW_BASE $PWD/submit\_$couplType\_$fz\_$fg$postfix.sh
 else 
 echo farmoutAnalysisJobs --quick-test --express-queue --input-dir=$PWD --fwklite \
-    --output-dir=. --job-count=1 \
-	--match-input-files=submit\_$couplType\_$f4\_$f5$postfix.sh \
-    --extra-inputs=$PWD/sherpa_f${couplType}_${f4}_${f5}$postfix\_cards.tgz,$PWD/MakeSherpaLibs.sh \
-    sherpa_ZZ\_$couplType\_$f4\_$f5$postfix $CMSSW_BASE $PWD/submit\_$couplType\_$f4\_$f5$postfix.sh
+    --output-dir=. --job-count=1 --shared-fs\
+	--match-input-files=submit\_$couplType\_$fz\_$fg$postfix.sh \
+    --extra-inputs=$PWD/sherpa_f${couplType}_${fz}_${fg}$postfix\_cards.tgz,$PWD/MakeSherpaLibs.sh \
+    sherpa_ZZ\_$couplType\_$fz\_$fg$postfix $CMSSW_BASE $PWD/submit\_$couplType\_$fz\_$fg$postfix.sh
 fi
