@@ -38,13 +38,11 @@
  F4_GAMMA = #F4G 
  F5_Z     = #F5Z
  F5_GAMMA = #F5G
- !UNITARIZATION_N = 2
- !UNITARIZATION_SCALE= 1000
 }(model)
 
 (beam)
- BEAM_1 = 2212; BEAM_ENERGY_1 = 3500;
- BEAM_2 = 2212; BEAM_ENERGY_2 = 3500;
+ BEAM_1 = 2212; BEAM_ENERGY_1 = 4000;
+ BEAM_2 = 2212; BEAM_ENERGY_2 = 4000;
 }(beam)
 
 (isr){        
@@ -67,16 +65,18 @@
  Mass -90 90 12 E_CMS
 }(selector)
 
-
 !!(shower){
 !  CSS_EW_MODE = 0  ! 0/1 turns the EW PS off/on
 !}(shower)
 
 (me){
   ME_SIGNAL_GENERATOR = Amegic
+! FACTORIZATION_SCALE_FACTOR=1
+! RENORMALIZATION_SCALE_FACTOR=1
 }(me)
 
 (fragmentation){
+ !these are default
  YFS_MODE = 2
  YFS_USE_ME = 1
 }
